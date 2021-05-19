@@ -1,0 +1,96 @@
+defmodule RomanNumerals do
+  @roman %{
+    1 => "I",
+    5 => "V",
+    10 => "X",
+    40 => "XL",
+    50 => "L",
+    90 => "XC",
+    100 => "C",
+    400 => "CD",
+    500 => "D",
+    900 => "CM",
+    1000 => "M"
+  }
+  @doc """
+  Convert the number to a roman number.
+  """
+
+  def convert1(digit) do
+    cond do
+      digit >= 1 and digit <= 3 -> String.duplicate(@roman[1], digit)
+      digit == 4 -> @roman[1] <> @roman[5]
+      digit == 5 -> @roman[5]
+      digit >= 6 and digit <= 8 -> @roman[5] <> String.duplicate(@roman[1], digit-5)
+      digit == 9 -> @roman[1] <> @roman[10]
+
+      true -> ""
+    end
+  end
+
+  def convert10(digit) do
+    cond do
+       digit >= 1 and digit <= 3 -> String.duplicate(@roman[10], digit)
+       digit == 4 -> @roman[10] <> @roman[50]
+       digit == 5 -> @roman[50]
+       digit >= 6 and digit <= 8 -> @roman[50] <> String.duplicate(@roman[10], digit-5)
+
+       digit == 9 -> @roman[90]
+
+      true -> ""
+    end
+  end
+
+   def convert100(digit) do
+     cond do
+        digit >= 1 and digit <= 3 -> String.duplicate(@roman[100], digit)
+        digit == 4 -> @roman[100] <> @roman[500]
+        digit == 5 -> @roman[500]
+        digit >= 6 and digit <= 8 -> @roman[50] <> String.duplicate(@roman[100], digit-5)
+        digit == 9 -> @roman[900]
+
+
+
+       true -> ""
+     end
+   end
+
+   def convert1000(digit) do
+    cond do
+       digit >= 1 and digit <= 3 -> String.duplicate(@roman[1000], digit)
+       digit == 4 -> @roman[1000] <> @roman[5000]
+       digit == 5 -> @roman[5000]
+       digit >= 6 and digit <= 8 -> @roman[50] <> String.duplicate(@roman[1000], digit-5)
+       digit == 9 -> @roman[9000]
+
+
+
+      true -> ""
+    end
+  end
+
+
+  @spec numeral(pos_integer) :: String.t()
+  def numeral(number) do
+    list = Integer.digits(number)
+
+    one =       Enum.at(list,-1)
+    ten =       Enum.at(list,-2)
+    hundred =   Enum.at(list,-3)
+    thousand =  Enum.at(list,-4)
+
+
+
+    string1 = convert1(one)
+    string2 = convert10(ten)
+    string3 = convert100(hundred)
+    string4 = convert1000(thousand)
+
+    string4 <> string3 <> string2 <> string1
+
+  end
+
+end
+
+num = 911
+IO.inspect(RomanNumerals.numeral(num), label: "Test 48")
