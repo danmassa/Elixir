@@ -38,3 +38,6 @@ jobs:
     - name: Run tests
       run: mix test
       
+    - name: zeige mir den Inhalt vom Verzeichnis
+      run: ls -la
+      
