@@ -8,8 +8,6 @@ on:
 
 jobs:
   my_testing:
-
-    name: Build and test
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +27,7 @@ jobs:
       run: mix deps.get
     - name: Run tests
       run: mix test
+    - name: Unit Test Ausfuehren
+      run : cd hamming
+    - name: Enter Directory  
+      run : mix test
