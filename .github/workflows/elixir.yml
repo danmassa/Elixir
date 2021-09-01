@@ -12,8 +12,19 @@ on:
 jobs:
   my_testing:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./accumulate
 
     steps:
+    - uses: actions/checkout@main
+    - name: hamming directory
+      run: mix test
+      working-directory: ${{env.working-directory}}
+    - name: accumulate directory
+      run: |
+        mix test
+      working-directory: ${{env.working-directory}}
+    
     - uses: actions/checkout@v2
     - name: Set up Elixir
       uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
