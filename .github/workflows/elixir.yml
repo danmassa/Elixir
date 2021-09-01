@@ -13,6 +13,8 @@ on:
 jobs:
   my_testing:
     runs-on: ubuntu-latest
+    env: 
+       working-directory: ./accumulate
 
     steps:
     - uses: actions/checkout@v2
