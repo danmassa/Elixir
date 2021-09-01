@@ -19,14 +19,6 @@ jobs:
       working-directory: ./accumulate
 
     steps:
-    - uses: actions/checkout@main
-    - name: hamming directory
-      run: ls
-      working-directory: ${{env.working-directory}}
-    - name: accumulate directory
-      run: |
-        mix test
-      working-directory: ${{env.working-directory}}
     
     - uses: actions/checkout@v2
     - name: Set up Elixir
