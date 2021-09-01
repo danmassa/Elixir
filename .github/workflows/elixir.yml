@@ -9,6 +9,9 @@ on:
     branches: 
       - main 
       - master
+defaults:
+  run:
+    working-directory: ./accumulate
 jobs:
   my_testing:
     runs-on: ubuntu-latest
