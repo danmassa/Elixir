@@ -3,7 +3,7 @@ name: Elixir Unit Tester
 on:
   push:
     branches: 
-    - main 
+      - main 
 
 
 jobs:
