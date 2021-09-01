@@ -25,7 +25,7 @@ jobs:
       working-directory: ${{env.working-directory}}
     - name: accumulate directory
       run: |
-        ls
+        mix test
       working-directory: ${{env.working-directory}}
     
     - uses: actions/checkout@v2
