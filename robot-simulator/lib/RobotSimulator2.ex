@@ -12,7 +12,7 @@ defmodule RobotSimulator do
   """
   @spec create(direction :: atom, position :: {integer, integer}) :: any
   def create() do
-    %{direction: :north, position: {0, 0}}
+    %__MODULE__{direction: :north, position: {0, 0}}
   end
 
   def create(direction, _) when not (direction in @directions) do
@@ -20,7 +20,7 @@ defmodule RobotSimulator do
   end
 
   def create(direction, {x, y}) when is_integer(x) and is_integer(y) do
-    %{direction: direction, position: {x, y}}
+    %__MODULE__{direction: direction, position: {x, y}}
   end
 
   def create(_, _) do
@@ -50,11 +50,11 @@ defmodule RobotSimulator do
   end
 
   def simulate_step(robot, one_movement) when one_movement in @non_advance_movements do
-    %{robot | direction: new_direction(robot.direction, one_movement)}
+    %__MODULE__{robot | direction: new_direction(robot.direction, one_movement)}
   end
 
   def simulate_step(robot, "A") do
-    %{robot | position: new_position(robot.direction, robot.position)}
+    %__MODULE__{robot | position: new_position(robot.direction, robot.position)}
   end
 
   defp new_direction(:north, "L"), do: :west
